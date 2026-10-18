@@ -1,0 +1,4 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status
+EMP001,2026/01/05,8,8,
+EMP002,05-01-2026,8,8,
+EMP003,not-a-date,8,8,

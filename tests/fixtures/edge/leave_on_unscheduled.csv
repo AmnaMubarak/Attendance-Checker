@@ -1,0 +1,3 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-10,0,0,vacation,leave recorded on an unscheduled day; valid per schema
+EMP001,2026-01-11,0,0,sick,another valid combination

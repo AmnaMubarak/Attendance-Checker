@@ -1,0 +1,4 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,0,SICK,uppercase
+EMP002,2026-01-05,8,0,Vacation,mixed case
+EMP003,2026-01-05,8,0,  unpaid  ,extra whitespace

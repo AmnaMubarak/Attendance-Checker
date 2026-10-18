@@ -1,0 +1,7 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,8,,
+EMP001,2026-01-06,8,8,,
+EMP001,2026-01-07,8,0,sick,out with flu
+EMP002,2026-01-05,8,8,,
+EMP002,2026-01-06,0,0,,weekend not scheduled
+EMP003,2026-01-05,8,7.5,,left 30 min early

@@ -1,0 +1,3 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status
+EMP001,2026-01-05,8,0,holiday
+EMP002,2026-01-05,8,0,PTO

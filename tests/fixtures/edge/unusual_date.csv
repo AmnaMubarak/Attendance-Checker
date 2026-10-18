@@ -1,0 +1,4 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,1999-12-31,8,8,,before 2000 - should warn only
+EMP002,2099-01-01,8,8,,far future - should warn only
+EMP003,2026-01-05,8,8,,normal date - no warning

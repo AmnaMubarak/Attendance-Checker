@@ -1,0 +1,3 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,17,,17h is above default IMPLAUSIBLE_HOURS threshold but inside schema range
+EMP001,2026-01-06,8,24,,exactly at schema maximum

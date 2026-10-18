@@ -1,0 +1,3 @@
+employee_id,date,scheduled_hours,worked_hours
+EMP001,2026-01-05,8,8
+EMP002,2026-01-05,8,0
