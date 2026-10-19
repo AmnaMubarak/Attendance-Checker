@@ -1,0 +1,38 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,11,,streak of 4 - NOT flagged at default streak>=5
+EMP001,2026-01-06,8,11,,
+EMP001,2026-01-07,8,11,,
+EMP001,2026-01-08,8,11,,
+EMP001,2026-01-09,8,8,,non-over day ends streak at 4
+EMP002,2026-01-05,8,11,,streak of exactly 5 - ALL FLAGGED
+EMP002,2026-01-06,8,11,,
+EMP002,2026-01-07,8,11,,
+EMP002,2026-01-08,8,11,,
+EMP002,2026-01-09,8,11,,
+EMP003,2026-01-05,8,11,,streak of 6 over days with a leave day in middle - leave does not break - ALL 6 FLAGGED
+EMP003,2026-01-06,8,11,,
+EMP003,2026-01-07,8,0,sick,leave day - skipped from sequence - does NOT break
+EMP003,2026-01-08,8,11,,
+EMP003,2026-01-09,8,11,,
+EMP003,2026-01-12,8,11,,
+EMP003,2026-01-13,8,11,,
+EMP004,2026-01-05,8,11,,streak of 5 then gap > 10 days then another streak of 5 - gap splits them - BOTH halves flagged independently as length 5
+EMP004,2026-01-06,8,11,,
+EMP004,2026-01-07,8,11,,
+EMP004,2026-01-08,8,11,,
+EMP004,2026-01-09,8,11,,
+EMP004,2026-01-26,8,11,,gap from 2026-01-09 is 17 calendar days > 10 - streak breaks here
+EMP004,2026-01-27,8,11,,
+EMP004,2026-01-28,8,11,,
+EMP004,2026-01-29,8,11,,
+EMP004,2026-01-30,8,11,,
+EMP005,2026-01-05,8,11,,gap of EXACTLY 10 calendar days must NOT break - becomes a single streak of 10
+EMP005,2026-01-06,8,11,,
+EMP005,2026-01-07,8,11,,
+EMP005,2026-01-08,8,11,,
+EMP005,2026-01-09,8,11,,
+EMP005,2026-01-19,8,11,,gap from 2026-01-09 is exactly 10 calendar days - must NOT break
+EMP005,2026-01-20,8,11,,
+EMP005,2026-01-21,8,11,,
+EMP005,2026-01-22,8,11,,
+EMP005,2026-01-23,8,11,,

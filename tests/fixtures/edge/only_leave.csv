@@ -1,0 +1,6 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,0,vacation,employee on vacation for the entire window
+EMP001,2026-01-06,8,0,vacation,
+EMP001,2026-01-07,8,0,vacation,
+EMP001,2026-01-08,8,0,vacation,
+EMP001,2026-01-09,8,0,vacation,

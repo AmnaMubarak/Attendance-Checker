@@ -28,7 +28,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import date, datetime
 from pathlib import Path
-from typing import IO, Iterable, List, Optional, Union
+from typing import IO, List, Optional, Union
 
 import pandas as pd
 

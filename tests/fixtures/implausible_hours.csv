@@ -1,0 +1,6 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,15,,should NOT flag at default max=16 (15 is below)
+EMP002,2026-01-05,8,16,,should NOT flag at default max=16 (equality is NOT above)
+EMP003,2026-01-05,8,16.5,,should FLAG at default max=16 (16.5 is above)
+EMP004,2026-01-05,8,20,,should FLAG at default max=16
+EMP005,2026-01-05,8,24,,should FLAG at default max=16 (schema maximum)

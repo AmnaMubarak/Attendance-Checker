@@ -1,0 +1,9 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,8,,row 0 - part of a duplicate PAIR with row 1
+EMP001,2026-01-05,8,7,,row 1 - part of a duplicate PAIR with row 0
+EMP002,2026-01-05,8,8,,row 2 - unique and should NOT flag
+EMP003,2026-01-05,8,8,,row 3 - part of a duplicate TRIPLE with rows 4 and 5
+EMP003,2026-01-05,8,6,,row 4 - part of a duplicate TRIPLE with rows 3 and 5
+EMP003,2026-01-05,8,7,,row 5 - part of a duplicate TRIPLE with rows 3 and 4
+EMP004,2026-01-05,8,8,,row 6 - same employee as row 7 but different date - should NOT flag
+EMP004,2026-01-06,8,8,,row 7 - same employee as row 6 but different date - should NOT flag

@@ -1,0 +1,3 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,4,sick,half-day sick with 4h worked - documented limitation: CONTRADICTORY_LEAVE will fire
+EMP002,2026-01-06,8,0,sick,full-day sick - clean record with no flag

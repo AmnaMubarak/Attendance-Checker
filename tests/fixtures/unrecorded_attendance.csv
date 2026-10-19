@@ -1,0 +1,7 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,0,,should FLAG - scheduled day with zero hours and no leave
+EMP002,2026-01-05,8,0,sick,should NOT flag - approved leave with zero hours
+EMP003,2026-01-05,0,0,,should NOT flag - unscheduled day (weekend/holiday)
+EMP004,2026-01-05,8,8,,should NOT flag - normal full day
+EMP005,2026-01-05,8,4,,should NOT flag - partial day with some work recorded
+EMP006,2026-01-06,8,0,,should FLAG - another scheduled day with no work or leave

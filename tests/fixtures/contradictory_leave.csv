@@ -1,0 +1,6 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,8,sick,should FLAG - full worked day marked as sick leave
+EMP002,2026-01-05,8,0,sick,should NOT flag - approved leave with zero hours
+EMP003,2026-01-05,8,8,,should NOT flag - normal full day with no leave
+EMP004,2026-01-05,0,0,vacation,should NOT flag - leave on an unscheduled day
+EMP005,2026-01-05,8,2,vacation,should FLAG - any positive worked hours with leave is contradictory

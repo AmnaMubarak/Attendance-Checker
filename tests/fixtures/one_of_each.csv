@@ -1,0 +1,14 @@
+employee_id,date,scheduled_hours,worked_hours,leave_status,notes
+EMP001,2026-01-05,8,0,,UNRECORDED_ATTENDANCE - scheduled day with no work and no leave
+EMP002,2026-01-05,8,8,sick,CONTRADICTORY_LEAVE - sick + full worked day
+EMP003,2026-01-05,8,8,,DUPLICATE_RECORD - first row of a pair
+EMP003,2026-01-05,8,7,,DUPLICATE_RECORD - second row of the pair
+EMP004,2026-01-05,8,18,,IMPLAUSIBLE_HOURS - 18h above default max of 16
+EMP005,2026-01-05,8,11,,SUSTAINED_OVERTIME - day 1 of 5-day streak at +3h variance
+EMP005,2026-01-06,8,11,,
+EMP005,2026-01-07,8,11,,
+EMP005,2026-01-08,8,11,,
+EMP005,2026-01-09,8,11,,SUSTAINED_OVERTIME - day 5 of 5-day streak
+EMP006,2026-01-05,8,8,,clean row - no flag expected
+EMP007,2026-01-05,8,0,sick,clean leave row - no flag expected
+EMP008,2026-01-10,0,0,,clean weekend row - no flag expected
