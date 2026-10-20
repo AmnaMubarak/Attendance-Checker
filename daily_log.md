@@ -1,6 +1,15 @@
 # Daily log
 
-## Day 1
+Project days vs calendar days. The headings below are *project* days,
+and project work was front-loaded. Day 1 and Day 2 landed on separate
+calendar days (Thu 2026-10-15 and Fri 2026-10-16). Day 3, Day 4 and
+Day 5 were compressed into a single calendar day (Mon 2026-10-19)
+because I missed the weekend. Day 6 is today (Tue 2026-10-20) and
+covers submission prep and recording. The brief said "A short log for
+each of the 5 days" of project work; this file keeps that promise and
+adds the compression note here for honesty.
+
+## Day 1 (Thu 2026-10-15)
 
 * Read and ratified the design: minimal CSV schema, five anomaly codes,
   neutral one-sentence explanations, five-day plan.
@@ -23,7 +32,7 @@
 * Wrote `tests/test_schema.py` (21 tests) and `tests/test_config.py`
   (15 tests). All 36 passed.
 
-## Day 2
+## Day 2 (Fri 2026-10-16)
 
 * Implemented three detectors in `attendance_checker/detectors.py`:
   `detect_unrecorded_attendance`, `detect_contradictory_leave`,
@@ -44,7 +53,7 @@
   fields. Rewrote the four fixtures to use " - " instead of commas.
   58/58 passed on the second run.
 
-## Day 2.5 (sample dataset)
+## Day 2.5 (sample dataset, Fri 2026-10-16)
 
 * The test fixtures proved specific detector behaviors but there was
   no realistic bulk dataset for the UI to demo on. Built
@@ -61,7 +70,7 @@
 * Verified end-to-end: the three Day 2 detectors catch exactly the
   injected rows, no more, no less.
 
-## Day 3
+## Day 3 (Mon 2026-10-19)
 
 * Added the remaining two detectors: `detect_implausible_hours`
   (strict `>` comparison against `max_plausible_hours`) and
@@ -93,7 +102,7 @@
   before writing. Regenerated the sample.
 * Full suite: 91 passed.
 
-## Day 4
+## Day 4 (Mon 2026-10-19)
 
 * Built `attendance_checker/app.py`: Streamlit page with sidebar
   thresholds for every `DetectionConfig` field (including
@@ -105,7 +114,7 @@
   (never runs detection on partial data).
 * Byte-compiled the app for a quick syntax sanity check.
 
-## Day 5
+## Day 5 (Mon 2026-10-19)
 
 * Wrote `README.md`: install, run, schema, error / warning codes,
   anomaly reference, `SUSTAINED_OVERTIME` streak rules, config,
@@ -123,3 +132,26 @@
 * Verified by actually launching Streamlit this time (headless on
   port 8599). Startup banner printed and an HTTP GET returned 200
   with no traceback. Server stopped afterwards.
+
+## Day 6 - submission prep (Tue 2026-10-20)
+
+* Added `Final directive.md` (the frozen spec after Day 1's two
+  review rounds) and `unlearned.md` (one-page first-person
+  reflection) because the submission form asks for both as separate
+  deliverables.
+* Wrote `raising-the-load.md` to make the "Raising the load (20%)"
+  rubric item easy to score: scoreboard table at the top, 8
+  harder-vs-easier choices, 4 honest failures, 6 PowerShell
+  commands a reviewer can paste to prove any claim in 60 seconds,
+  and a §4 "Where I did NOT raise the load" to call out my own
+  ceiling (no pyproject.toml, no CI, no mypy gate, not stress-
+  tested on large data).
+* Cleaned up dead code: removed project-local `__pycache__` and
+  `.pytest_cache`, and dropped one unused `Iterable` import in
+  `schema.py`. Verified 91 tests still passing after cleanup.
+* Built `attendance-checker-submission.zip` (60.5 KB, 46 files,
+  caches excluded) ready to upload under the "Working code" slot.
+* Plan for the rest of today: record the 5-minute demo video,
+  record the Loom process video, personalize `unlearned.md` so the
+  voice is mine, and submit on the Match Hire form.
+* Nothing committed to Git yet.
