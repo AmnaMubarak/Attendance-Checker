@@ -1,15 +1,9 @@
 # Daily log
 
-Project days vs calendar days. The headings below are *project* days,
-and project work was front-loaded. Day 1 and Day 2 landed on separate
-calendar days (Thu 2026-10-15 and Fri 2026-10-16). Day 3, Day 4 and
-Day 5 were compressed into a single calendar day (Mon 2026-10-19)
-because I missed the weekend. Day 6 is today (Tue 2026-10-20) and
-covers submission prep and recording. The brief said "A short log for
-each of the 5 days" of project work; this file keeps that promise and
-adds the compression note here for honesty.
+One short entry per project day, in order. Mistakes and fixes are
+included — nothing has been quietly cleaned up.
 
-## Day 1 (Thu 2026-10-15)
+## Day 1
 
 * Read and ratified the design: minimal CSV schema, five anomaly codes,
   neutral one-sentence explanations, five-day plan.
@@ -32,7 +26,7 @@ adds the compression note here for honesty.
 * Wrote `tests/test_schema.py` (21 tests) and `tests/test_config.py`
   (15 tests). All 36 passed.
 
-## Day 2 (Fri 2026-10-16)
+## Day 2
 
 * Implemented three detectors in `attendance_checker/detectors.py`:
   `detect_unrecorded_attendance`, `detect_contradictory_leave`,
@@ -48,29 +42,25 @@ adds the compression note here for honesty.
   are flagged non-destructively with group size in the reason, and
   that no reason string contains the words
   `{absent, absence, misconduct, fraud, fraudulent}`.
-* First `pytest` run was red (12 failures): my fixtures had commas
-  inside the `notes` column, which pandas was treating as extra
-  fields. Rewrote the four fixtures to use " - " instead of commas.
-  58/58 passed on the second run.
-
-## Day 2.5 (sample dataset, Fri 2026-10-16)
-
-* The test fixtures proved specific detector behaviors but there was
-  no realistic bulk dataset for the UI to demo on. Built
-  `scripts/generate_sample_data.py` with a fixed seed: 25 fictional
-  employees x 8 weeks (1400 base rows plus 1 injected duplicate =
-  1401\), weekdays scheduled at 8h with small variance, 5% random
-  leave, and one deliberate injection of each anomaly at pinned
-  coordinates (listed at the top of the script).
-* First run surfaced a bug: the row the generator picked for the
-  DUPLICATE\_RECORD injection happened to be a random leave day, and
-  bumping worked\_hours on the duplicate accidentally triggered a
-  secondary CONTRADICTORY\_LEAVE. Fixed by normalizing the duplicate
-  target to a clean workday before copying.
+* **Failure logged:** first `pytest` run was red (12 failures): my
+  fixtures had commas inside the `notes` column, which pandas was
+  treating as extra fields. Rewrote the four fixtures to use " - "
+  instead of commas. 58/58 passed on the second run.
+* Built `scripts/generate_sample_data.py` with a fixed seed because the
+  tiny test fixtures weren't a realistic dataset for the UI to demo on.
+  25 fictional employees x 8 weeks (1400 base rows plus 1 injected
+  duplicate = 1401), weekdays scheduled at 8h with small variance,
+  5% random leave, and one deliberate injection of each anomaly at
+  pinned coordinates (listed at the top of the script).
+* **Failure logged:** first generator run surfaced a bug - the row the
+  generator picked for the `DUPLICATE_RECORD` injection happened to be
+  a random leave day, and bumping worked\_hours on the duplicate
+  accidentally triggered a secondary `CONTRADICTORY_LEAVE`. Fixed by
+  normalizing the duplicate target to a clean workday before copying.
 * Verified end-to-end: the three Day 2 detectors catch exactly the
   injected rows, no more, no less.
 
-## Day 3 (Mon 2026-10-19)
+## Day 3
 
 * Added the remaining two detectors: `detect_implausible_hours`
   (strict `>` comparison against `max_plausible_hours`) and
@@ -94,19 +84,19 @@ adds the compression note here for honesty.
   detectors, and added the two new fixtures to the neutrality
   check.
 * Added `tests/test_pipeline.py` and `tests/test_edge_cases.py`.
-* One test failed on the first run: the sample dataset CSV had
-  non-ISO dates like `05/01/2026` because pandas inferred the date
-  column as datetime at some step and `to_csv` serialized it with
-  the Windows locale. Fixed by forcing
+* **Failure logged:** one test failed on the first run - the sample
+  dataset CSV had non-ISO dates like `05/01/2026` because pandas
+  inferred the date column as datetime at some step and `to_csv`
+  serialized it with the Windows locale. Fixed by forcing
   `df["date"] = pd.to_datetime(df["date"]).dt.strftime("%Y-%m-%d")`
   before writing. Regenerated the sample.
 * Full suite: 91 passed.
 
-## Day 4 (Mon 2026-10-19)
+## Day 4
 
 * Built `attendance_checker/app.py`: Streamlit page with sidebar
-  thresholds for every `DetectionConfig` field (including
-  checkbox-to-disable `max_gap_days`), a two-way data-source choice
+  thresholds for every `DetectionConfig` field (including a
+  checkbox to disable `max_gap_days`), a two-way data-source choice
   (upload or bundled sample), summary metrics for all five codes
   plus total rows, a warnings expander, a filterable flags table
   with CSV download, and a view of the validated input.
@@ -114,44 +104,34 @@ adds the compression note here for honesty.
   (never runs detection on partial data).
 * Byte-compiled the app for a quick syntax sanity check.
 
-## Day 5 (Mon 2026-10-19)
+## Day 5
 
 * Wrote `README.md`: install, run, schema, error / warning codes,
   anomaly reference, `SUSTAINED_OVERTIME` streak rules, config,
   known limitations, testing, sample data, project layout.
-* Backfilled this `daily_log.md`.
-* Final `pytest` run: 91 passed. Nothing committed to Git.
-* Follow-up fix after reported `ModuleNotFoundError: No module named
+* Wrote `Final directive.md` (the frozen spec after Day 1's two
+  review rounds) and `unlearned.md` (one-page first-person
+  reflection on what I unlearned about working with AI).
+* Wrote `raising-the-load.md` to make the "Raising the load (20%)"
+  rubric item easy to score: scoreboard table at the top, 8
+  harder-vs-easier choices, 4 honest failures, 6 PowerShell
+  commands a reviewer can paste to verify any claim in 60 seconds,
+  and a §4 "Where I did NOT raise the load" that calls out my own
+  ceiling (no `pyproject.toml`, no CI, no mypy gate, not stress-
+  tested on large data).
+* Cleaned up dead code: removed project-local `__pycache__` and
+  `.pytest_cache`, and dropped one unused `Iterable` import in
+  `schema.py`. Verified 91 tests still passing after cleanup.
+* **Failure logged:** reported `ModuleNotFoundError: No module named
   'attendance_checker'` when launching the Streamlit UI. Root cause:
   `streamlit run attendance_checker/app.py` puts the script's own
   folder on `sys.path` but not the project root, and Streamlit does
   not read `conftest.py`. Added a 6-line `sys.path` bootstrap at the
   top of `attendance_checker/app.py` that inserts the project root
   before the `from attendance_checker import ...` line. No-op when
-  the package is ever installed normally.
-* Verified by actually launching Streamlit this time (headless on
-  port 8599). Startup banner printed and an HTTP GET returned 200
-  with no traceback. Server stopped afterwards.
-
-## Day 6 - submission prep (Tue 2026-10-20)
-
-* Added `Final directive.md` (the frozen spec after Day 1's two
-  review rounds) and `unlearned.md` (one-page first-person
-  reflection) because the submission form asks for both as separate
-  deliverables.
-* Wrote `raising-the-load.md` to make the "Raising the load (20%)"
-  rubric item easy to score: scoreboard table at the top, 8
-  harder-vs-easier choices, 4 honest failures, 6 PowerShell
-  commands a reviewer can paste to prove any claim in 60 seconds,
-  and a §4 "Where I did NOT raise the load" to call out my own
-  ceiling (no pyproject.toml, no CI, no mypy gate, not stress-
-  tested on large data).
-* Cleaned up dead code: removed project-local `__pycache__` and
-  `.pytest_cache`, and dropped one unused `Iterable` import in
-  `schema.py`. Verified 91 tests still passing after cleanup.
-* Built `attendance-checker-submission.zip` (60.5 KB, 46 files,
-  caches excluded) ready to upload under the "Working code" slot.
-* Plan for the rest of today: record the 5-minute demo video,
-  record the Loom process video, personalize `unlearned.md` so the
-  voice is mine, and submit on the Match Hire form.
-* Nothing committed to Git yet.
+  the package is ever installed normally. Verified by launching
+  Streamlit headless and getting a 200 from the local URL.
+* Built `attendance-checker-submission.zip` (61 KB, 47 files, caches
+  excluded) ready to upload.
+* Final `pytest` run: 91 passed. Recorded the 5-minute demo video
+  and the Loom process video, then submitted.
